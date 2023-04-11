@@ -166,7 +166,7 @@ def A(ni, nf, adj, h):
 
 	pq.put( (0, ni) )
 	while not pq.empty():
-		# elegir el nodo con menor valor de funcion de "hojas"
+		# elegir el nodo con menor valor de funcion en pq
 		c, actual = pq.get()
 
 		exp.append(actual)
