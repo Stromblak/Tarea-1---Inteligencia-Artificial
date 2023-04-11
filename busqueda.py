@@ -42,7 +42,6 @@ def imprimir(camino, adj, exp, nf):
 	# verificar si es solucion o no
 	if not len(camino) or camino[-1] != nf:
 		print("Sin solucion")
-		return
 	
 	costo = 0
 	for i in range(len(camino)):
