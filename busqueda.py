@@ -167,7 +167,6 @@ def A(ni, nf, adj, h):
 	pq.put( (0, ni) )
 	while not pq.empty():
 		# elegir el nodo con menor valor de funcion de "hojas"
-		fMin = float("inf")
 		c, actual = pq.get()
 
 		exp.append(actual)
@@ -190,12 +189,12 @@ def A(ni, nf, adj, h):
 
 	# armar el camino si encontro uno
 	camino = []
-	actual = nf
-	while actual != ni and nf in padre:
-		camino.append(actual)
-		actual = padre[actual]
-
 	if nf in padre:
+		actual = nf
+		while actual != ni:
+			camino.append(actual)
+			actual = padre[actual]
+
 		camino.append(ni)
 
 	camino.reverse()
