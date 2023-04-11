@@ -159,22 +159,17 @@ def A(ni, nf, adj, h):
 	costo[ni] = 0
 
 	# nodos a explorar
-	hojas = set()
-	hojas.add(ni)
+	pq = pqueue()
 
-	
 	padre = dict() 	# nodo padre del nodo n
 	exp = []		# nodos expandidos
 
-	while len(hojas):
+	pq.put( (0, ni) )
+	while not pq.empty():
 		# elegir el nodo con menor valor de funcion de "hojas"
 		fMin = float("inf")
-		for n in hojas:
-			if funcion[n] < fMin:
-				fMin = funcion[n]
-				actual = n
+		c, actual = pq.get()
 
-		hojas.remove(actual)
 		exp.append(actual)
 
 		# terminar si llego al objetivo
@@ -190,7 +185,7 @@ def A(ni, nf, adj, h):
 				padre[n] = actual
 				funcion[n] = f
 				costo[n] = costo[actual] + adj[actual][n]
-				hojas.add(n)
+				pq.put( (f, n) )
 
 
 	# armar el camino si encontro uno
